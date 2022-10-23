@@ -15,13 +15,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
         DB::table('pelanggan')->insert([
             ['nama' => 'Anggito Wicaksono', 'domisili' => 'Jak-Ut', 'jenis_kelamin' => 'Pria'],
             ['nama' => 'Sintha', 'domisili' => 'Jak-Tim', 'jenis_kelamin' => 'Wanita'],
@@ -32,6 +25,17 @@ class DatabaseSeeder extends Seeder
             ['nama' => 'Pensil', 'kategori' => 'ATK', 'harga' => 10000],
             ['nama' => 'Payung', 'kategori' => 'RT', 'harga' => 70000],
             ['nama' => 'Kipas', 'kategori' => 'Elektronik', 'harga' => 200000]
+        ]);
+
+        DB::table('penjualan')->insert([
+            ['tanggal' => '2022-10-01', 'id_pelanggan' => 1, 'grand_total' => 90000],
+            ['tanggal' => '2022-10-21', 'id_pelanggan' => 2, 'grand_total' => 400000]
+        ]);
+
+        DB::table('item_penjualan')->insert([
+            ['id_penjualan' => 1, 'id_barang' => 1, 'qty' => 2],
+            ['id_penjualan' => 1, 'id_barang' => 2, 'qty' => 1],
+            ['id_penjualan' => 2, 'id_barang' => 3, 'qty' => 2]
         ]);
     }
 }

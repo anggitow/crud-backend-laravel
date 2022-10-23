@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BarangController;
 use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\PenjualanController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,4 +31,8 @@ Route::controller(BarangController::class)->prefix('barang')->group(function(){
     Route::get('/show/{id}', 'show');
     Route::post('/update/{id}', 'update');
     Route::get('/destroy/{id}', 'destroy');
+});
+
+Route::controller(PenjualanController::class)->prefix('penjualan')->group(function() {
+    Route::get('/', 'index');
 });
