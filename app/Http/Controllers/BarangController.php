@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use stdClass;
 
-class PelangganController extends Controller
+class BarangController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        $data = DB::table('pelanggan')->select('id as key', 'nama', 'domisili', 'jenis_kelamin')->get();
+        $data = DB::table('barang')->select('id as key', 'nama', 'kategori', 'harga')->get();
         return response()->json([
             'success' => true,
             'message' => 'Sukses',
@@ -33,21 +32,21 @@ class PelangganController extends Controller
     {
         $data = [
             'nama' => $request->input('nama'),
-            'domisili' => $request->input('domisili'),
-            'jenis_kelamin' => $request->input('jenis_kelamin'),
+            'kategori' => $request->input('kategori'),
+            'harga' => $request->input('harga'),
             'created_at' => date('Y-m-d H:i:s')
         ];
 
-        $insert = DB::table('pelanggan')->insert($data);
+        $insert = DB::table('barang')->insert($data);
         if ($insert) {
             return response()->json([
                 'success' => true,
-                'message' => 'Data Pelanggan Berhasil Ditambahkan'
+                'message' => 'Data Barang Berhasil Ditambahkan'
             ]);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Data Pelanggan Gagal Ditambahkan'
+                'message' => 'Data Barang Gagal Ditambahkan'
             ]);
         }
     }
@@ -60,17 +59,17 @@ class PelangganController extends Controller
      */
     public function show($id)
     {
-        $data = DB::table('pelanggan')->where('id', $id)->first();
+        $data = DB::table('barang')->where('id', $id)->first();
         if ($data) {
             return response()->json([
                 'success' => true,
-                'message' => 'Data pelanggan ditemukan',
+                'message' => 'Data barang ditemukan',
                 'data' => $data
             ]);
         } else {
             return response()->json([
                 'success' => false,
-                'message'=>'Data pelanggan tidak ditemukan',
+                'message'=>'Data barang tidak ditemukan',
                 'data' => null
             ]);
         }
@@ -87,21 +86,21 @@ class PelangganController extends Controller
     {
         $data = [
             'nama' => $request->input('nama'),
-            'domisili' => $request->input('domisili'),
-            'jenis_kelamin' => $request->input('jenis_kelamin'),
+            'kategori' => $request->input('kategori'),
+            'harga' => $request->input('harga'),
             'updated_at' => date('Y-m-d H:i:s')
         ];
 
-        $update = DB::table('pelanggan')->where('id', $id)->update($data);
+        $update = DB::table('barang')->where('id', $id)->update($data);
         if ($update) {
             return response()->json([
                 'success' => true,
-                'message' => 'Data Pelanggan Berhasil Diubah'
+                'message' => 'Data Barang Berhasil Diubah'
             ]);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Data Pelanggan Gagal Diubah'
+                'message' => 'Data Barang Gagal Diubah'
             ]);
         }
     }
@@ -114,16 +113,16 @@ class PelangganController extends Controller
      */
     public function destroy($id)
     {
-        $delete = DB::table('pelanggan')->where('id', $id)->delete();
+        $delete = DB::table('barang')->where('id', $id)->delete();
         if ($delete) {
             return response()->json([
                 'success' => true,
-                'message' => 'Data Pelanggan Berhasil Dihapus'
+                'message' => 'Data Barang Berhasil Dihapus'
             ]);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Data Pelanggan Gagal Dihapus'
+                'message' => 'Data Barang Gagal Dihapus'
             ]);
         }
     }

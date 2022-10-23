@@ -23,9 +23,15 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         DB::table('pelanggan')->insert([
-            ['nama' => 'Andi', 'domisili' => 'Jak-Ut', 'jenis_kelamin' => 'Pria'],
-            ['nama' => 'Budi', 'domisili' => 'Jak-Bar', 'jenis_kelamin' => 'Pria'],
-            ['nama' => 'Sintha', 'domisili' => 'Jak-Tim', 'jenis_kelamin' => 'Wanita']
+            ['nama' => 'Anggito Wicaksono', 'domisili' => 'Jak-Ut', 'jenis_kelamin' => 'Pria'],
+            ['nama' => 'Sintha', 'domisili' => 'Jak-Tim', 'jenis_kelamin' => 'Wanita'],
+            ['nama' => 'Budi', 'domisili' => 'Jak-Bar', 'jenis_kelamin' => 'Pria']
+        ]);
+
+        DB::table('barang')->insert([
+            ['nama' => 'Pensil', 'kategori' => 'ATK', 'harga' => 10000],
+            ['nama' => 'Payung', 'kategori' => 'RT', 'harga' => 70000],
+            ['nama' => 'Kipas', 'kategori' => 'Elektronik', 'harga' => 200000]
         ]);
     }
 }
