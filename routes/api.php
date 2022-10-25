@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(PelangganController::class)->prefix('pelanggan')->group(function (){
+Route::controller(PelangganController::class)->prefix('pelanggan')->group(function () {
     Route::get('/', 'index');
     Route::post('/store', 'store');
     Route::get('/show/{id}', 'show');
@@ -25,7 +25,7 @@ Route::controller(PelangganController::class)->prefix('pelanggan')->group(functi
     Route::get('/destroy/{id}', 'destroy');
 });
 
-Route::controller(BarangController::class)->prefix('barang')->group(function(){
+Route::controller(BarangController::class)->prefix('barang')->group(function () {
     Route::get('/', 'index');
     Route::post('/store', 'store');
     Route::get('/show/{id}', 'show');
@@ -33,6 +33,10 @@ Route::controller(BarangController::class)->prefix('barang')->group(function(){
     Route::get('/destroy/{id}', 'destroy');
 });
 
-Route::controller(PenjualanController::class)->prefix('penjualan')->group(function() {
+Route::controller(PenjualanController::class)->prefix('penjualan')->group(function () {
     Route::get('/', 'index');
+    Route::post('/store', 'store');
+    Route::get('show/{id}', 'show');
+    Route::post('/update/{id}', 'update');
+    Route::get('/destroy/{id}', 'destroy');
 });
